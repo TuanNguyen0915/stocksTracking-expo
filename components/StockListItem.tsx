@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View, useColorScheme } from 'react-native'
 import Animated, { FadeInLeft, FadeInRight } from 'react-native-reanimated'
 import Feather from '@expo/vector-icons/Feather'
 import TextCustom from './TextCustom'
-
+import { AntDesign } from '@expo/vector-icons'
 export interface Stock {
   symbol: string
   name: string
@@ -24,7 +24,11 @@ const StockListItem = ({ stock, index }: StockListItemProps) => {
       <Pressable style={styles.container}>
         {/* LEFT SIDE CONTAINER */}
         <Animated.View entering={FadeInLeft.delay(index * 150).springify()} style={{ gap: 5 }}>
-          <Text style={styles.textSymbol}>{stock.symbol}</Text>
+          <Text style={styles.textSymbol}>
+            {stock.symbol}
+            {'  '} <AntDesign name='staro' size={18} color='gray' />
+          </Text>
+
           <Text style={{ color: 'gray' }}>{stock.name}</Text>
         </Animated.View>
         <Animated.View
@@ -61,6 +65,6 @@ const styles = StyleSheet.create({
   textSymbol: {
     fontWeight: 'bold',
     fontSize: 18,
-    color: 'blue',
+    color: '#4B70F5',
   },
 })
